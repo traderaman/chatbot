@@ -2,6 +2,8 @@ import json
 import numpy as np
 from tensorflow import keras
 from sklearn.preprocessing import LabelEncoder
+%matplotlib inline
+
 
 import colorama 
 colorama.init()
@@ -34,3 +36,7 @@ def chat():
         inp = input()
         if inp.lower() == "quit":
             break
+
+            result = model.predict(keras.preprocessing.sequence.pad_sequences(tokenizer.texts_to_sequences([inp]),
+                                             truncating='post', maxlen=max_len))
+        tag = lbl_encoder.inverse_transform([np.argmax(result)])
