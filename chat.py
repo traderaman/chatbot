@@ -25,3 +25,12 @@ def chat():
     # load label encoder object
     with open('label_encoder.pickle', 'rb') as enc:
         lbl_encoder = pickle.load(enc)
+
+         # parameters
+    max_len = 20
+    
+    while True:
+        print(Fore.LIGHTBLUE_EX + "User: " + Style.RESET_ALL, end="")
+        inp = input()
+        if inp.lower() == "quit":
+            break
