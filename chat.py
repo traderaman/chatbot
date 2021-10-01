@@ -40,3 +40,7 @@ def chat():
             result = model.predict(keras.preprocessing.sequence.pad_sequences(tokenizer.texts_to_sequences([inp]),
                                              truncating='post', maxlen=max_len))
         tag = lbl_encoder.inverse_transform([np.argmax(result)])
+        
+        for i in data['intents']:
+            if i['tag'] == tag:
+                print(Fore.GREEN + "ChatBot:" + Style.RESET_ALL , np.random.choice(i['responses']))
